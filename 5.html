@@ -7,13 +7,95 @@
 
 <body>
   <h1><a href="index.html">WEB1 - HTML & Internet 강의 정리</a></h1>
+  <h2><u>05. Web Server</u></h2>
 
-  <a href="1.html">01. 기본 설명</a><br>
-  <a href="2.html">02. TAG</a><br>
-  <a href="3.html">03. TEST</a><br>
-  <a href="4.html">03. Web Hosting</a><br>
-  <a href="5.html">04. Web Server</a><br>
-  <a href="6.html">05. 참고 </a><br>
+  <p>
+    <h4><u>기본적 원리 설명:</u></h4>
+    <ul>
+      <li>다른 컴퓨터에서 내가 만든 index.html 파일을 접속하게 하려면, 두 대의 컴퓨터가 필요하다. </li>
+      <li><u>내 컴퓨터(A)</u> 안에 저장된 index.html을 <u>다른 컴퓨터(B)</u>로 열 때,
+        B의 웹 브라우저는 A의 웹 브라우저에게 index.html을 요청하고,
+        A의 웹 서버는 A 안에 저장된 index.html을 가져와서 B의 웹 브라우저에 공유해준다.</li>
+    </ul>
+  </p>
+  <br>
+  <p>
+    자, 이제 웹 서버를 이용하여 다른 컴퓨터로 index.html을 열어보자.
+    그러기 위해선 앞에 언급한 것처럼, 두 대의 컴퓨터가 필요하다.
+    스마트폰은 "전화기의 탈을 쓴" 컴퓨터다.
+    스마트폰의 웹 브라우저를 이용하여 컴퓨터의 웹 서버를 통해 index.html을 열어보자.
+  </p>
+  <br>
+  <p>
+    <h4><u>1. Web Server for Chrome을 이용하는 방법</u></h4>
+  <ul>
+    <li><a href="https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb"
+    title="Web Server for Chrome" target="_blank">Web Server for Chrome</a>를 설치하자.</li>
+    <li>설치 완료 후 프로그램을 열어서 'Choose Folder'에 index.html이 든 폴더를 지정해주자.</li>
+    <li>그리고 'Web Server'를 켜면, 'Web Server URL(s)' 하단에 있는 링크로 index.html을 접속할 수 있다.</li>
+    <li>스마트폰으로 확인하기 전에, 컴퓨터로 잘 열리는지 확인해보자.</li>
+    <li>잘 열린다면, 컴퓨터에 연결된 인터넷(wifi)과 동일한 인터넷을 스마트폰에 연결해야 한다.</li>
+    <li>같은 인터넷으로 연결했다면, 'Web Server URL(s)'에 두 개의 링크가 보일 것이다.
+    새로 생긴 링크를 스마트폰의 웹 브라우저 주소창에 입력해서 이동해보자.</li>
+    <li>잘 열린다면, 다른 컴퓨터(B)로 컴퓨터(A) 안에 있는 index.html 파일을 여는 것에 성공한 것이다.</li>
+    <li>Web Server를 끄면, 당연히 'Web Server URL(s)'로 접속해도 페이지가 나오지 않는다.</li>
+  </ul>
+  </p>
+  <br>
+
+  <p>
+    <h4><u>부연 설명:</u></h4>
+    <pre> http://127.0.0.1:8887 </pre>
+    <ul>
+      <li>http는 HyperText Transfer Protocol의 약자이다.</li>
+      <li>127.0.0.1은 IP 주소(Internet Protocol Address)인데, 저 숫자의 조합은 '내 컴퓨터'를 의미한다.</li>
+      <li>8887은 Port라고 하는데, 이용하는 서버와 관련이 있는 듯하다. 자세한 건 몰라도 괜찮다.</li>
+    </ul>
+  </p>
+  <br>
+
+  <p>
+  <h4><u>2. Apache 서버를 이용하여 인터넷 작동 원리를 파헤쳐보자</u></h4>
+  <ul>
+    <li>
+      <a href="https://bitnami.com/stack/mamp" target="_blank"
+      title="MAMP packaged by Bitnami">Bitnami사의 MAMP</a>라는 프로그램을 설치하자.</li>
+      <pre>사실상 Mac OS에는 'Apache'라는 웹 서버가 기본적으로 설치되어 있기 때문에
+'MAMP'라는 프로그램을 꼭 다운 받아야 하는 것은 아니지만,
+나중에 사용할 때를 대비하여 (MAMP를 다운 받으면 Apache가 컴퓨터에 설치되기 때문에)
+MAMP를 설치하도록 하자.</pre>
+    <li>설치할 때, Apache 외에 다른 것들은 설치할 필요가 없으니 체크박스에서 체크 표시를 해제한다.</li>
+    <li>설치가 완료되면, Applications 폴더에 'mampstack'으로 시작하는 폴더가 새로 생겼을 것이다.</li>
+    <li>mampstack 폴더 안에 'manager-osx'라는 프로그램이 우리가 사용할 프로그램이다.</li>
+    <li>mampstack 폴더 안에 'apache2'라는 폴더가 있고, 그 안에 'htdocs'라는 폴더가 있을 것이다.</li>
+    <li>htdocs 폴더 안에 HTML 파일들 (및 다른 미디어 파일들)을 넣어주면 된다.</li>
+    <br>
+    <li>manager-osx를 켜보자.</li>
+    <li>'Manage Servers' 탭으로 가면 'Apache Web Server'의 상태를 확인할 수 있다.</li>
+    <li>Web Server for Chrome을 이용할 때, 서버를 켜면 파일을 볼 수 있고, 끄면 볼 수 없는 것처럼,
+      여기서도 동일하게 작동한다.</li>
+    <br>
+    <li>이제 스마트폰으로 컴퓨터에 있는 index.html을 열려면, index.html 파일이 들어있는 컴퓨터의 IP 주소를 알아야 한다.</li>
+    <li>컴퓨터의 IP 주소를 알기 위해서는 컴퓨터의 제어판(System Preferences)에 들어가서 네트워크를 연다.</li>
+    <li>TCP/IP 탭을 누르면, 'IPv4 Address'라고 표시된 주소가 그 컴퓨터의 IP 주소다.</li>
+    <br>
+    <li>index.html 파일이 들어있는 내 컴퓨터의 IP 주소는 192.168.0.8이며, Port 숫자는 8080이다.</li>
+      <pre>Web Server for Chrome을 이용했을 때는 포트 숫자가 8887이었지만,
+사실상 MAMP를 설치하면서 Apache를 하나 더 설치해서, '나중 Apache 서버를 사용하겠다'는 의미라고 생각하고 넘어가면 된다.</pre>
+    <li>컴퓨터에 연결된 동일한 네트워크에 스마트폰을 연결한 후, 웹 브라우저를 열자.</li>
+    <li>스마트폰 웹 브라우저에 'http://192.168.0.8:8080/index.html'을 입력하고 이동해보자.</li>
+      <pre>8080 서버를 이용해서 192.168.0.8 (컴퓨터) 안에 들어 있는 index.html 파일을 불러온다는 뜻이다.</pre>
+    <li>잘 열린다면, 다른 컴퓨터(B)로 컴퓨터(A) 안에 있는 index.html 파일을 여는 것에 성공한 것이다.</li>
+
+
+  </ul>
+  </p>
+  <br>
+
+
+
+  <h3><a href="4.html">04. Web Hosting</a><br></h3>
+  <h3><a href="6.html">06. 참고 </a><br></h3>
 
 
 </body>
